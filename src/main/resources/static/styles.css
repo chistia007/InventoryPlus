@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.button-container {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-button {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  background-color: #007bff; /* You can change this to your preferred button color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.left-button:hover {
+  background-color: #0056b3; /* You can change this to your preferred button color on hover */
+}

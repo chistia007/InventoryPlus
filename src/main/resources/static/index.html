@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Left-Side Buttons</title>
+    <link rel="stylesheet"  href="styles.css">
+</head>
+<body>
+<div class="button-container">
+    <button class="left-button">Product Info</button>
+    <button class="left-button">Warehouse</button>
+    <button class="left-button" id="userInfoButton">User info</button>
+</div>
+<div id="userInfoContainer">
+    <!-- The fetched user info will be displayed here -->
+</div>
+
+<script>
+    document.getElementById("userInfoButton").addEventListener("click", function() {
+        fetch("/user")
+        .then(response => response.text())
+        .then(data => {
+            // Update the content of the current page with the fetched data
+             document.getElementById("userInfoContainer").innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+<div>
+    <h2>Add User</h2>
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Add User</button>
+    </form>
+</div>
+
+
+<script>
+    document.getElementById("userForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const user = {};
+        formData.forEach((value, key) => {
+            user[key] = value;
+        });
+
+        fetch("/addUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+<!--        .then(response => response.text())-->
+<!--        .then(data => {-->
+<!--            // Display the response message in userInfoContainer-->
+<!--            document.getElementById("userInfoContainer").innerHTML = data;-->
+<!--        })-->
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+</body>
+</html>
+
