@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Previous Users</h1>
+    <!-- Add User button outside of the user list -->
+    <button id="addUserButton">Add User</button>
+    <!-- User list -->
+    <ul id="userList">
+        <!-- User list items will be added dynamically using JavaScript -->
+    </ul>
+    <!-- Add User form, initially hidden -->
+    <div id="addUserModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Add New User</h2>
+            <form id="addUserForm">
+                <label for="userName">User Name:</label>
+                <input type="text" id="userName" name="userName" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="userType">User Type:</label>
+                <input type="text" id="userType" name="userType" required>
+                <label for="salary">Salary:</label>
+                <input type="number" id="salary" name="salary" required>
+                <button type="submit">Add User</button>
+            </form>
+        </div>
+    </div>
+    <script>
+    document.getElementById("addUserForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const user = {};
+        formData.forEach((value, key) => {
+            user[key] = value;
+        });
+        console.log(user)
+        fetch("/bending/addUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+<!--        .then(response => response.text())-->
+<!--        .then(data => {-->
+<!--            // Display the response message in userInfoContainer-->
+<!--            document.getElementById("userInfoContainer").innerHTML = data;-->
+<!--        })-->
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+<script src="ownerTab.js"></script>
+</body>
+</html>

@@ -14,9 +14,10 @@ body {
 }
 
 .left-button {
-  padding: 10px 20px;
+  width: 200px; /* Fixed width for all buttons */
+  padding: 10px;
   margin-bottom: 10px;
-  background-color: #007bff; /* You can change this to your preferred button color */
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -25,5 +26,118 @@ body {
 }
 
 .left-button:hover {
-  background-color: #0056b3; /* You can change this to your preferred button color on hover */
+  background-color: #0056b3;
+}
+
+.welcome-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.welcome-text h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  font-size: 18px;
+  color: #333;
+}
+
+
+
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#search-results {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#search-results li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#search-results li:hover {
+    background-color: #f0f0f0;
+}
+
+.item-details {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+
+
+/* Styles for owner tab*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* Place it on top of other elements */
+}
+
+/* Modal content container */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add a subtle box-shadow for depth */
+    position: relative;
+    max-width: 80%; /* Limit the width for larger screens */
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #333; /* Slightly darker color for better visibility */
+    font-size: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.close:hover {
+    color: #555; /* Change color on hover */
 }
