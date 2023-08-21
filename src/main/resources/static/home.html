@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Left-Side Buttons</title>
+    <link rel="stylesheet"  href="styles.css">
+</head>
+<body>
+<div class="button-container">
+    <button class="left-button" onclick="redirectToPlotInfo()">Plot Info</button>
+    <button class="left-button">Warehouse</button>
+    <button class="left-button" id="userInfoButton" onclick="redirectToUserInfo()">User info</button>
+</div>
+
+<script>
+    function redirectToPlotInfo() {
+    // Redirect to the "plot_info.html" page when the button is clicked
+    window.location.href = 'plot_info.html';
+}
+</script>
+
+<script>
+    function redirectToUserInfo() {
+    window.location.href = 'OwnerTab.html';
+}
+</script>
+
+<div class="welcome-text">
+    <h1>Welcome to InventoryPlus</h1>
+    <p>Lets get started!</p>
+</div>
+
+</body>
+</html>

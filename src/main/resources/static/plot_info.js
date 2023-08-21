@@ -24,22 +24,15 @@ searchInput.addEventListener('input', function () {
             if (data.length > 0) {
                 data.forEach(item => {
                     const listItem = document.createElement('li');
-                    listItem.textContent = `Name: ${item.name}, Id: ${item.id}`;
-
-                    data.forEach(item => {
-                        const listItem = document.createElement('li');
-                        listItem.textContent = `Name: ${item.name}, Description: ${item.description}`;
-
-                        // Add click event listeners to each search result item if needed
-
-                        searchResults.appendChild(listItem);
-                    });
+                    listItem.textContent = `Id: ${item.plot_id},Name: ${item.productName}, Location: ${item.location}, Image URL: ${item.imageUrl}, Total Quantity: ${item.totalQuantity}, Quantity Sold: ${item.quantitySold}, Quantity Left: ${item.quantityLeft}, Moved To Warehouse: ${item.movedToWarehouse}, Product Grade: ${item.productGrade}, Ploughing Time: ${item.ploughingTime}, Reaping Time: ${item.reapingTime}, Warehouse Id: ${item.wareHouseId}`;
 
                     // Add a click event listener to each search result item
                     listItem.addEventListener('click', () => {
                         displayItemDetails(item);
                     });
 
+                    // Append the list item to the search results
+                    searchResults.appendChild(listItem);
                 });
             } else {
                 // Handle case when no results are found
@@ -51,3 +44,9 @@ searchInput.addEventListener('input', function () {
         });
 });
 
+// Function to display item details (you need to implement this)
+function displayItemDetails(item) {
+    // Implement this function to display the details of the clicked item
+    // You can access item properties like item.productName and item.plot_id
+    // and update your HTML to show the details.
+}

@@ -32,7 +32,10 @@ dependencies {
 	implementation 'com.google.code.gson:gson:2.8.9'
 	implementation 'mysql:mysql-connector-java:8.0.33' // Use the version that matches your MySQL server
 
+	implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
 }
+
+
 
 tasks.named('test') {
 	useJUnitPlatform()

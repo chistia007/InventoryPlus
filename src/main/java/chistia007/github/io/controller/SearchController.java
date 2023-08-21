@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,19 +15,49 @@ public class SearchController {
     @GetMapping("/search")
     @ResponseBody
     public List<Item> search(@RequestParam("query") String query) {
-        System.out.println("=============================aaaaaaaaaaaaaa====================="+ query);
         List<Item> response = new ArrayList<>();
-        // Handle the search logic and populate the response list
-        Item item = new Item();
-        item.setName("Your Item Name1"); // Set the name based on your search logic
-        item.setId(1); // Set the name based on your search logic
-        response.add(item);
-        item.setName("Your Item Name2"); // Set the name based on your search logic
-        item.setId(2); // Set the name based on your search logic
-        response.add(item);
-        // Add more items as needed
+
+        try {
+            // Connect to your MySQL database
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventoryplus", "root", "root");
+
+            // Construct and execute the SQL query
+            String sql = "SELECT * FROM plot WHERE plot_id LIKE ? OR productName LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + query + "%");
+            stmt.setString(2, "%" + query + "%");
+            ResultSet resultSet = stmt.executeQuery();
+
+            // Fetch search results
+            while (resultSet.next()) {
+                // Create a new Item object for each row
+                Item item = new Item();
+                item.setPlot_id(resultSet.getInt("plot_id"));
+                item.setProductName(resultSet.getString("productName"));
+                item.setLocation(resultSet.getString("location"));
+                item.setImageUrl(resultSet.getString("imageUrl"));
+                item.setTotalQuantity(resultSet.getInt("totalQuantity"));
+                item.setQuantitySold(resultSet.getInt("quantitySold"));
+                item.setQuantityLeft(resultSet.getInt("quantityLeft"));
+                item.setMovedToWareHouse(resultSet.getString("movedToWarehouse"));
+                item.setProductGrade(resultSet.getString("productGrade"));
+                item.setPloughingTime(resultSet.getString("ploughingTime"));
+                item.setReapingTime(resultSet.getString("reapingTime"));
+                item.setWareHouseID(resultSet.getInt("wareHouseId"));
+
+                // Add the Item object to the response list
+                response.add(item);
+            }
+
+            // Close the database connection
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return response;
     }
+
 }
 
 
