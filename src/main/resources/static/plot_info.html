@@ -17,11 +17,27 @@
     <div class="item-details" id="item-details">
         <!-- Item details will be displayed here -->
     </div>
+
+    <!-- Add a form for creating and updating items -->
+    <form id="item-form">
+        <h2>Edit Plot Information</h2>
+        <input type="number" id="plot_id" name="plot_id" placeholder="Plot ID">
+        <input type="text" id="productName" name="productName" placeholder="Product Name" required>
+        <input type="text" id="location" name="location" placeholder="Location">
+        <input type="text" id="pricePerKg" name="pricePerKg" >
+        <input type="text" id="totalQuantity" name="totalQuantity" >
+        <input type="text" id="quantitySold" name="quantitySold" >
+        <input type="text" id="quantityLeft" name="quantityLeft">
+        <input type="text" id="movedToWareHouse" name="movedToWareHouse" >
+        <input type="text" id="productGrade" name="productGrade">
+        <input type="text" id="ploughingTime" name="ploughingTime">
+        <input type="text" id="reapingTime" name="reapingTime">
+        <input type="text" id="wareHouseID" name="wareHouseID" >
+
+        <button type="submit">Save</button>
+    </form>
 </div>
 
 <script src="plot_info.js"></script>
-
-
-
 </body>
 </html>

@@ -43,36 +43,113 @@ searchInput.addEventListener('input', function () {
         });
 });
 
-// Function to display item details (you need to implement this)
+
+
+
+
+
+const itemForm = document.getElementById('item-form');
+
+// Function to display item details and handle CRUD operations
 function displayItemDetails(item) {
-    const itemDetails = document.getElementById('item-details');
+   const itemDetails = document.getElementById('item-details');
 
-    // Create HTML elements to display the item details
-    const detailsContainer = document.createElement('div');
-    detailsContainer.classList.add('item-details-container');
+      // Create HTML elements to display the item details
+      const detailsContainer = document.createElement('div');
+      detailsContainer.classList.add('item-details-container');
 
-    // Populate the detailsContainer with item information
-    detailsContainer.innerHTML = `
-        <h2>Item Details</h2>
-        <p><strong>Id:</strong> ${item.plot_id}</p>
-        <p><strong>Name:</strong> ${item.productName}</p>
-        <p><strong>Location:</strong> ${item.location}</p>
+      // Populate the detailsContainer with item information
+      detailsContainer.innerHTML = `
+          <h2>Item Details</h2>
+          <p><strong>Id:</strong> ${item.plot_id}</p>
+          <p><strong>Name:</strong> ${item.productName}</p>
+          <p><strong>Location:</strong> ${item.location}</p>
 
-        <p><strong>Total Quantity:</strong> ${item.totalQuantity}</p>
-        <p><strong>Quality Sold:</strong> ${item.quantitySold}</p>
-        <p><strong>Quality Left:</strong> ${item.quantityLeft}</p>
+          <p><strong>Total Quantity:</strong> ${item.totalQuantity}</p>
+          <p><strong>Quality Sold:</strong> ${item.quantitySold}</p>
+          <p><strong>Quality Left:</strong> ${item.quantityLeft}</p>
 
-        <p><strong>Moved to Warehouse:</strong> ${item.movedToWarehouse}</p>
-        <p><strong>Product Grade:</strong> ${item.productGrade}</p>
-        <p><strong>Location:</strong> ${item.location}</p>
+          <p><strong>Moved to Warehouse:</strong> ${item.movedToWarehouse}</p>
+          <p><strong>Product Grade:</strong> ${item.productGrade}</p>
+          <p><strong>Location:</strong> ${item.location}</p>
 
-        <p><strong>Ploughing Time:</strong> ${item.ploughingTime}</p>
-        <p><strong>Reaping Time:</strong> ${item.reapingTime}</p>
-         <p><strong>Warehouse ID:</strong> ${item.wareHouseId}</p>
-        <!-- Add more details here as needed -->
-    `;
+          <p><strong>Ploughing Time:</strong> ${item.ploughingTime}</p>
+          <p><strong>Reaping Time:</strong> ${item.reapingTime}</p>
+           <p><strong>Warehouse ID:</strong> ${item.wareHouseId}</p>
+          <!-- Add more details here as needed -->
+      `;
 
-    // Clear previous item details and append the new details
-    itemDetails.innerHTML = '';
-    itemDetails.appendChild(detailsContainer);   // appendChild(), you place the detailsContainer element inside itemDetails
+      // Clearing previous item details and appending the new details
+      itemDetails.innerHTML = '';
+      itemDetails.appendChild(detailsContainer);  // will be added as a child div of itemDetails
+
+
+
+
+    // Enable the form for editing
+    itemForm.style.display = 'block';
+    // Populate the form fields with the item's data
+    document.getElementById('plot_id').value = item.plot_id;
+    document.getElementById('productName').value = item.productName;
+    document.getElementById('location').value = item.location;
+
+     document.getElementById('pricePerKg').value = item.pricePerKg;
+    document.getElementById('totalQuantity').value = item.totalQuantity;
+    document.getElementById('quantitySold').value = item.quantitySold;
+
+     document.getElementById('quantityLeft').value = item.quantityLeft;
+    document.getElementById('movedToWareHouse').value = item.movedToWareHouse;
+    document.getElementById('productGrade').value = item.productGrade;
+
+    document.getElementById('ploughingTime').value = item.ploughingTime;
+    document.getElementById('reapingTime').value = item.reapingTime;
+    document.getElementById('wareHouseID').value = item.wareHouseID;
+    // Populate other form fields as needed
+
+    // Handle form submission for editing
+//    itemForm.addEventListener('submit', (event) => {
+//        event.preventDefault();
+
+         //Extract the edited data from the form
+//        const editedItemData = {
+//            productName: document.getElementById('productName').value,
+//            location: document.getElementById('location').value,
+//            imageUrl: document.getElementById('imageUrl').value,
+//            pricePerKg: document.getElementById('pricePerKg').value,
+//            totalQuantity: document.getElementById('totalQuantity').value,
+//            quantitySold: document.getElementById('quantitySold').value,
+//            pricePerKg: document.getElementById('quantityLeft').value,
+//            location: document.getElementById('movedToWareHouse').value,
+//            imageUrl: document.getElementById('productGrade').value,
+//            productName: document.getElementById('ploughingTime').value,
+//            location: document.getElementById('reapingTime').value,
+//            imageUrl: document.getElementById('wareHouseID').value,
+//            // Extract other edited fields as needed
+//        };
+
+           document.getElementById("item-form").addEventListener("submit", function(event) {
+                 event.preventDefault();
+                 const formData = new FormData(event.target);
+                 const itemUpdate = {};
+                 formData.forEach((value, key) => {
+                     itemUpdate[key] = value;
+                 });
+                 console.log(itemUpdate)
+                 fetch("/bending/items/update", {
+                     method: "POST",
+                     headers: {
+                         "Content-Type": "application/json"
+                     },
+                     body: JSON.stringify(itemUpdate)
+                 })
+         <!--        .then(response => response.text())-->
+         <!--        .then(data => {-->
+
+         <!--            // Display the response message in userInfoContainer-->
+         <!--            document.getElementById("userInfoContainer").innerHTML = data;-->
+         <!--        })-->
+                 .catch(error => console.error('Error:', error));
+             });
+
 }
+
