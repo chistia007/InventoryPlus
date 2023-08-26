@@ -5,8 +5,7 @@ const searchResults = document.getElementById('search-results');
 searchInput.addEventListener('input', function () {
     const query = searchInput.value.trim();
 
-    // Check if the query is empty, and if so, clear the search results
-    if (query === '') {
+    if (query === '') {                              // Check if the query is empty, and if so, clear the search results
         searchResults.innerHTML = '';
         return; // Exit the function early
     }
@@ -46,7 +45,34 @@ searchInput.addEventListener('input', function () {
 
 // Function to display item details (you need to implement this)
 function displayItemDetails(item) {
-    // Implement this function to display the details of the clicked item
-    // You can access item properties like item.productName and item.plot_id
-    // and update your HTML to show the details.
+    const itemDetails = document.getElementById('item-details');
+
+    // Create HTML elements to display the item details
+    const detailsContainer = document.createElement('div');
+    detailsContainer.classList.add('item-details-container');
+
+    // Populate the detailsContainer with item information
+    detailsContainer.innerHTML = `
+        <h2>Item Details</h2>
+        <p><strong>Id:</strong> ${item.plot_id}</p>
+        <p><strong>Name:</strong> ${item.productName}</p>
+        <p><strong>Location:</strong> ${item.location}</p>
+
+        <p><strong>Total Quantity:</strong> ${item.totalQuantity}</p>
+        <p><strong>Quality Sold:</strong> ${item.quantitySold}</p>
+        <p><strong>Quality Left:</strong> ${item.quantityLeft}</p>
+
+        <p><strong>Moved to Warehouse:</strong> ${item.movedToWarehouse}</p>
+        <p><strong>Product Grade:</strong> ${item.productGrade}</p>
+        <p><strong>Location:</strong> ${item.location}</p>
+
+        <p><strong>Ploughing Time:</strong> ${item.ploughingTime}</p>
+        <p><strong>Reaping Time:</strong> ${item.reapingTime}</p>
+         <p><strong>Warehouse ID:</strong> ${item.wareHouseId}</p>
+        <!-- Add more details here as needed -->
+    `;
+
+    // Clear previous item details and append the new details
+    itemDetails.innerHTML = '';
+    itemDetails.appendChild(detailsContainer);   // appendChild(), you place the detailsContainer element inside itemDetails
 }

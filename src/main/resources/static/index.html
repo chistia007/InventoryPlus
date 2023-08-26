@@ -25,17 +25,16 @@
 
 <script>
     function submitLoginForm(event) {
-        event.preventDefault();
+        event.preventDefault();     //The first line of the function prevents the default form submission behavior, which would cause the page to reload.
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
         // Make an AJAX request to your Spring Boot controller
-        fetch(`/bending/login?username=${username}&password=${password}`)
-            .then(response => response.json())
+        fetch(`/bending/login?username=${username}&password=${password}`)  //passing username and password to bending/login api which will send integer as reply
+            .then(response => response.json())                                                                     //bending/login?username=user123&password=pass456
             .then(data => {
                 if (data === 1) {
-                    // Redirect to the "home.html" page if login is successful
-                    window.location.href = 'home.html';
+                    window.location.href = 'home.html';   // Redirect to the "home.html" page if login is successful
                 } else {
                     // Display an error message if login fails
                     document.getElementById("message").textContent = "Invalid credentials. Please try again.";
