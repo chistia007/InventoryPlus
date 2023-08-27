@@ -2,25 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warehouse Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        li:hover {
+            transform: scale(1.02);
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
 </head>
 <body>
 <h1>Warehouse Items</h1>
 <ul id="warehouse-items-list"></ul>
 
 <script>
-        fetch('/bending/warehouse-items')
-            .then(response => response.json())
-            .then(data => {
+    fetch('/bending/warehouse-items')
+        .then(response => response.json())
+        .then(data => {
             console.log('Data:', data);
-                const warehouseItemsList = document.getElementById('warehouse-items-list');
-                data.forEach(item => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `ID: ${item.plot_id}, Name: ${item.productName}, Location: ${item.location}, Warehouse ID: ${item.wareHouseID}`;
-                    warehouseItemsList.appendChild(listItem);
-                });
-            })
-            .catch(error => console.error('Error:', error));
-    </script>
+            const warehouseItemsList = document.getElementById('warehouse-items-list');
+            data.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `ID: ${item.plot_id}, Name: ${item.productName}, Location: ${item.location}, Warehouse ID: ${item.wareHouseID}`;
+                warehouseItemsList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+</script>
 </body>
 </html>

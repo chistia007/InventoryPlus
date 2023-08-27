@@ -50,94 +50,100 @@ body {
 
 
 
-
+/* Styles for plot  tab*/
+/* Add styles for the container */
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
+    background-color: #f5f5f5; /* Light gray background color */
+    border-radius: 10px; /* Increase border radius for rounded corners */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Style the heading */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333; /* Dark gray text color */
+}
+
+/* Style the search container */
 .search-container {
     text-align: center;
     margin-bottom: 20px;
 }
 
+/* Style the search input */
 #search {
     width: 100%;
+    padding: 12px; /* Increase padding for better readability */
+    font-size: 18px; /* Increase font size for better visibility */
+    border: 2px solid #007BFF; /* Add a blue border */
+    border-radius: 25px; /* Make the input more rounded */
+    outline: none;
+}
+
+/* Style the search results */
+#search-results {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    border: 2px solid #007BFF; /* Match the search input border */
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Style each search result item */
+#search-results li {
     padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* Add a smooth hover effect */
+}
+
+/* Change the background color on hover */
+#search-results li:hover {
+    background-color: #007BFF; /* Blue background color on hover */
+    color: #fff; /* White text color on hover */
+}
+
+/* Style the form heading */
+#item-form h2 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Style form inputs */
+#item-form input[type="number"],
+#item-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
     font-size: 16px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
 }
 
-#search-results {
-    list-style-type: none;
-    padding: 0;
-    text-align: left;
-    border: 1px solid #ccc;
+/* Style the submit button */
+#item-form button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
     border-radius: 5px;
-    margin-top: 5px;
-}
-
-#search-results li {
-    padding: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
     cursor: pointer;
 }
 
-#search-results li:hover {
-    background-color: #f0f0f0;
+/* Change the button color on hover */
+#item-form button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
-.item-details {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
 
 
 
 /* Styles for owner tab*/
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100; /* Place it on top of other elements */
-}
 
-/* Modal content container */
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add a subtle box-shadow for depth */
-    position: relative;
-    max-width: 80%; /* Limit the width for larger screens */
-}
-
-/* Close button */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    color: #333; /* Slightly darker color for better visibility */
-    font-size: 20px;
-    background: none;
-    border: none;
-    padding: 0;
-}
-
-.close:hover {
-    color: #555; /* Change color on hover */
-}
