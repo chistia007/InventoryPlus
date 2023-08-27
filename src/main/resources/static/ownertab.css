@@ -1,24 +1,20 @@
-* {
-  margin: 20;
-  padding: 0;
-  box-sizing: border-box;
-}
+ body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
 
-/* Global styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-}
 
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center align items horizontally */
-  justify-content: center; /* Center align items vertically */
-  text-align: center; /* Center-align text within the container */
+  text-align: center;
 }
 
 h1 {
@@ -27,10 +23,14 @@ h1 {
   color: #333;
 }
 
-
-
-
 /* Button styles */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 #addUserButton {
   padding: 12px 24px;
   background-color: #007BFF;
@@ -38,15 +38,14 @@ h1 {
   border: none;
   border-radius: 5px;
   font-size: 16px;
-
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-bottom: 40px;
 }
 
 #addUserButton:hover {
   background-color: #0056b3;
 }
-
-
-
 
 /* Modal styles */
 .modal {
@@ -98,6 +97,13 @@ label {
   font-weight: bold;
 }
 
+select{
+         padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="number"] {
@@ -109,6 +115,59 @@ input[type="number"] {
 
 /* Apply styles to the Add User button outside of the user list */
 #addUserButton {
-  float: right;
   clear: both;
 }
+
+
+/* Improved spacing for form elements */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+button[type="submit"] {
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+/* Center the form horizontally */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+ul#userList li {
+  border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between; /* Align user details horizontally */
+    align-items: center; /* Center user details vertically */
+    opacity: 50; /* Start with 0 opacity */
+    transform: translateX(-10px); /* Start with a -10px translation to the left */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Add spacing between user details */
+ul#userList li > * {
+  margin: 5px; /* Adjust as needed for spacing */
+}
+
+/* Add hover effect to user list items */
+ul#userList li:hover {
+  background-color: #e0e0e0; /* Change the background color on hover */
+  cursor: pointer; /* Change the cursor to indicate interactivity */
+  opacity: 1; /* Fade in the item on hover */
+  transform: translateX(0); /* Slide the item to its original position on hover */
+}
+
+
+

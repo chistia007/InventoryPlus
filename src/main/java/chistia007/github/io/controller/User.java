@@ -17,15 +17,15 @@ import javax.persistence.Id;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private int user_id;
 
     private String userName;
-    private Long password;
+    private int password;
     private String userType;
-    private Long salary;
+    private int salary;
 
     @JsonCreator
-    public User(@JsonProperty("userName") String userName,@JsonProperty("password") long password ,@JsonProperty("userType") String userType,@JsonProperty("salary") long salary) {
+    public User(@JsonProperty("userName") String userName,@JsonProperty("password") int password ,@JsonProperty("userType") String userType,@JsonProperty("salary") int salary) {
         this.userName = userName;
         this.password = password;
         this.userType = userType;
@@ -35,11 +35,11 @@ public class User {
     public User() {
     }
 
-    public Long getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Long user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 
@@ -58,19 +58,19 @@ public class User {
         this.userType = userType;
     }
 
-    public Long getPassword() {
+    public int getPassword() {
         return password;
     }
 
-    public void setPassword(Long password) {
+    public void setPassword(int password) {
         this.password = password;
     }
 
-    public Long getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(Long salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 }
