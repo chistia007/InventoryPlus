@@ -52,6 +52,9 @@ const itemForm = document.getElementById('item-form');
 
 // Function to display item details and handle CRUD operations
 function displayItemDetails(item) {
+   const searchResults = document.getElementById('search-results');
+   searchResults.innerHTML = '';
+
    const itemDetails = document.getElementById('item-details');
 
       // Create HTML elements to display the item details
@@ -106,26 +109,6 @@ function displayItemDetails(item) {
     document.getElementById('wareHouseID').value = item.wareHouseID;
     // Populate other form fields as needed
 
-    // Handle form submission for editing
-//    itemForm.addEventListener('submit', (event) => {
-//        event.preventDefault();
-
-         //Extract the edited data from the form
-//        const editedItemData = {
-//            productName: document.getElementById('productName').value,
-//            location: document.getElementById('location').value,
-//            imageUrl: document.getElementById('imageUrl').value,
-//            pricePerKg: document.getElementById('pricePerKg').value,
-//            totalQuantity: document.getElementById('totalQuantity').value,
-//            quantitySold: document.getElementById('quantitySold').value,
-//            pricePerKg: document.getElementById('quantityLeft').value,
-//            location: document.getElementById('movedToWareHouse').value,
-//            imageUrl: document.getElementById('productGrade').value,
-//            productName: document.getElementById('ploughingTime').value,
-//            location: document.getElementById('reapingTime').value,
-//            imageUrl: document.getElementById('wareHouseID').value,
-//            // Extract other edited fields as needed
-//        };
 
            document.getElementById("item-form").addEventListener("submit", function(event) {
                  event.preventDefault();
@@ -142,12 +125,11 @@ function displayItemDetails(item) {
                      },
                      body: JSON.stringify(itemUpdate)
                  })
-         <!--        .then(response => response.text())-->
-         <!--        .then(data => {-->
+                .then(response => response.text())
+              .then(data => {
 
-         <!--            // Display the response message in userInfoContainer-->
-         <!--            document.getElementById("userInfoContainer").innerHTML = data;-->
-         <!--        })-->
+                   location.reload();
+                 })
                  .catch(error => console.error('Error:', error));
              });
 

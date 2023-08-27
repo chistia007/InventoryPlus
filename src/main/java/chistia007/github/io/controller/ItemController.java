@@ -15,7 +15,7 @@ public class ItemController {
     private List<Item> items = new ArrayList<>();
 
     @PostMapping("/items/update")
-    public void updatePlot(@RequestBody Item item) {
+    public int updatePlot(@RequestBody Item item) {
         System.out.println(item.getTotalQuantity() +"0000" +item.getPlot_id());
         items.add(item);
 
@@ -50,6 +50,7 @@ public class ItemController {
         } catch (Exception e) {
             System.err.println(e);
         }
+        return 1;
     }
 }
 
