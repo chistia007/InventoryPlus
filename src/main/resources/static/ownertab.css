@@ -113,13 +113,13 @@ input[type="number"] {
   border-radius: 5px;
 }
 
-/* Apply styles to the Add User button outside of the user list */
+/* Applying styles to the Add User button outside of the user list */
 #addUserButton {
   clear: both;
 }
 
 
-/* Improved spacing for form elements */
+/* Improving spacing for form elements */
 input[type="text"],
 input[type="password"],
 input[type="number"],
@@ -128,7 +128,7 @@ button[type="submit"] {
   margin-bottom: 15px;
 }
 
-/* Center the form horizontally */
+/* Centering the form horizontally */
 .modal-content form {
   display: flex;
   flex-direction: column;

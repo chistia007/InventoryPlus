@@ -17,7 +17,7 @@ body {
     width: 300px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center contents horizontally */
+    align-items: center;
 }
 
 .login-container h2 {
@@ -29,9 +29,8 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align form elements to the left */
-    margin-left: 0; /* Reset the left margin */
-}
+    align-items: flex-start;
+    margin-left: 0;
 
 .form-group label {
     display: block;
