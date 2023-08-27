@@ -14,6 +14,7 @@ public class Item {
     private String ploughingTime;
     private String reapingTime;
     private int wareHouseID;
+    private String wareHouseName;
 
 
     // Constructors, getters, and setters
@@ -25,6 +26,7 @@ public class Item {
     public Item(int plot_id, String productName,  int pricePerKg,String location,String imageUrl, int totalQuantity, int quantitySold,int quantityLeft, String movedToWareHouse,String productGrade,String ploughingTime,String reapingTime,int wareHouseID) {
         this.plot_id = plot_id;
         this.productName = productName;
+        this.pricePerKg=pricePerKg;
         this.location = location;
         this.imageUrl = imageUrl;
         this.totalQuantity = totalQuantity;
@@ -35,6 +37,27 @@ public class Item {
         this.ploughingTime = ploughingTime;
         this.reapingTime = reapingTime;
         this.wareHouseID = wareHouseID;
+    }
+
+    public Item(int plot_id, String productName,  int pricePerKg,String location, int quantitySold, String productGrade,String reapingTime,int wareHouseID,String wareHouseName) {
+        this.plot_id = plot_id;
+        this.pricePerKg=pricePerKg;
+        this.productName = productName;
+        this.location = location;
+        this.quantitySold = quantitySold;
+        this.productGrade = productGrade;
+        this.reapingTime = reapingTime;
+        this.wareHouseID = wareHouseID;
+        this.wareHouseName=wareHouseName;
+
+    }
+
+    public String getWareHouseName() {
+        return wareHouseName;
+    }
+
+    public void setWareHouseName(String wareHouseName) {
+        this.wareHouseName = wareHouseName;
     }
 
     public int getPlot_id() {

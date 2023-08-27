@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 public class ItemController {
-    PreparedStatement preparedStatement;
     private List<Item> items = new ArrayList<>();
 
     @PostMapping("/items/update")

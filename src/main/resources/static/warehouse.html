@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse Items</title>
+</head>
+<body>
+<h1>Warehouse Items</h1>
+<ul id="warehouse-items-list"></ul>
+
+<script>
+        fetch('/bending/warehouse-items')
+            .then(response => response.json())
+            .then(data => {
+            console.log('Data:', data);
+                const warehouseItemsList = document.getElementById('warehouse-items-list');
+                data.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `ID: ${item.plot_id}, Name: ${item.productName}, Location: ${item.location}, Warehouse ID: ${item.wareHouseID}`;
+                    warehouseItemsList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>

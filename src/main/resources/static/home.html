@@ -7,21 +7,24 @@
 <body>
 <div class="button-container">
     <button class="left-button" onclick="redirectToPlotInfo()">Plot Info</button>
-    <button class="left-button">Warehouse</button>
+    <button class="left-button" onclick="redirectToWarehouseInfo()">Warehouse</button>
     <button class="left-button" id="userInfoButton" onclick="redirectToUserInfo()">User info</button>
 </div>
 
-<script>
-    function redirectToPlotInfo() {
-    // Redirect to the "plot_info.html" page when the button is clicked
-    window.location.href = 'plot_info.html';
-}
-</script>
+
 
 <script>
+
+    function redirectToPlotInfo() {
+    // RedirectING to the "plot_info.html" page when the button is clicked
+    window.location.href = 'plot_info.html';
+        }
     function redirectToUserInfo() {
     window.location.href = 'OwnerTab.html';
-}
+        }
+    function redirectToWarehouseInfo(){
+    window.location.href = 'warehouse.html';
+        }
 </script>
 
 <div class="welcome-text">
